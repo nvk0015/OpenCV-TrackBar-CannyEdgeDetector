@@ -13,6 +13,7 @@ while True:
     success, img = cap.read()
     lowerThreshold = cv2.getTrackbarPos('lowerThreshold','Edge Tracker')
     upperThreshold = cv2.getTrackbarPos('upperThreshold','Edge Tracker')
+    img = cv2.GaussianBlur(img,(3,3),cv2.BORDER_DEFAULT)
     gray_scale = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(img,lowerThreshold,upperThreshold)
     image = np.concatenate((gray_scale,edges),axis=1)
